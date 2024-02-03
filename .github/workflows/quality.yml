@@ -13,7 +13,7 @@ on:
 env:
   PHPSTAN_CACHE_DIR: '.phpstan.result.cache'
   COVERAGE_PATH: 'coverage.xml'
-  GH_TOKEN: ${{ secrets.GH_TOKEN }}
+  GH_TOKEN: ${{ github.token }}
 
 concurrency:
   group: "${{ github.workflow }}-${{ github.ref }}"
