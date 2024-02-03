@@ -8,7 +8,7 @@ on:
         type: string
     secrets:
       CODECOV_TOKEN:
-        required: true
+        required: false
 
 env:
   PHPSTAN_CACHE_DIR: '.phpstan.result.cache'
@@ -172,6 +172,9 @@ jobs:
 
   php-coverage:
     name: PHP Test coverage
+    env:
+      CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+    if: ${{ env.CODECOV_TOKEN }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
