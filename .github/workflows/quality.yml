@@ -1,4 +1,4 @@
-name: CI
+name: Quality
 
 on:
   workflow_call:
@@ -236,7 +236,7 @@ jobs:
         uses: crate-ci/typos@master
 
   completed:
-    name: Quality-Completed # Used as a required workflow name
+    name: Quality-Done # Used as a required workflow name
     runs-on: ubuntu-latest
     needs:
       - composer-validate
