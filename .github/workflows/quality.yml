@@ -54,7 +54,7 @@ jobs:
         uses: ramsey/composer-install@v2
 
       - name: Check Optimized autoload
-        run: composer dump-autoload --optimize --strict-psr
+        run: composer dump-autoload --dev --optimize --strict-psr
 
   php-code-style:
     name: PHP Code Style
