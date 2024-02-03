@@ -6,6 +6,9 @@ on:
       PHP_VERSION:
         required: true
         type: string
+    secrets:
+      CODECOV_TOKEN:
+        required: true
 
 env:
   PHPSTAN_CACHE_DIR: '.phpstan.result.cache'
