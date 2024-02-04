@@ -8,7 +8,7 @@ on:
         type: string
     secrets:
       CODECOV_TOKEN:
-        required: true
+        required: false
 
 env:
   PHPSTAN_CACHE_DIR: '.phpstan.result.cache'
