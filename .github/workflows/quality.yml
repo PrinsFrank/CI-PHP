@@ -6,6 +6,10 @@ on:
       PHP_VERSION:
         required: true
         type: string
+      PHP_VERSIONS:
+        required: false
+        type: string
+        default: '["8.1", "8.2", "8.3"]'
     secrets:
       CODECOV_TOKEN:
         required: false
@@ -153,7 +157,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        php-version: ['8.2', '8.3']
+        php-version: ${{ fromJSON(github.event.inputs.PHP_VERSIONS) }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
