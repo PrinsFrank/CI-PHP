@@ -157,7 +157,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        php-version: ${{ fromJSON(github.event.inputs.PHP_VERSIONS) }}
+        php-version: ${{ fromJSON(inputs.PHP_VERSIONS) }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
