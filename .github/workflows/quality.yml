@@ -126,17 +126,19 @@ jobs:
 
       - name: Push PHPStan branch cache
         if: always()
-        uses: actions/cache/save@v4
+        uses: PrinsFrank/actions-cache/save@add-force-overwrite-for-cache
         with:
           path: ${{ env.PHPSTAN_CACHE_DIR }}
           key: phpstan-${{ github.ref_name }}
+          force-overwrite: true
 
       - name: Push PHPStan main cache
         if: ${{ github.ref_name == github.event.repository.default_branch }}
-        uses: actions/cache/save@v4
+        uses: PrinsFrank/actions-cache/save@add-force-overwrite-for-cache
         with:
           path: ${{ env.PHPSTAN_CACHE_DIR }}
           key: phpstan
+          force-overwrite: true
 
   php-unit:
     name: PHP Tests - Unit
