@@ -112,25 +112,18 @@ jobs:
       - name: Install dependencies
         uses: ramsey/composer-install@v3
 
-      - name: Pull PHPStan cache
-        id: pull-phpstan-cache
-        uses: actions/cache/restore@v4
+      - name: PHPStan Branch cache
+        id: phpstan-branch-cache
+        uses: PrinsFrank/actions-cache@add-force-overwrite-for-cache
         with:
           path: ${{ env.PHPSTAN_CACHE_DIR }}
           key: phpstan-${{ github.ref_name }}
+          force-overwrite: true
           restore-keys: |
             phpstan
 
       - name: Run PHPStan
         run: composer run stan
-
-      - name: Push PHPStan branch cache
-        if: always()
-        uses: PrinsFrank/actions-cache/save@add-force-overwrite-for-cache
-        with:
-          path: ${{ env.PHPSTAN_CACHE_DIR }}
-          key: phpstan-${{ github.ref_name }}
-          force-overwrite: true
 
       - name: Push PHPStan main cache
         if: ${{ github.ref_name == github.event.repository.default_branch }}
