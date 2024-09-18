@@ -9,13 +9,15 @@ on:
       PHP_VERSIONS:
         required: false
         type: string
-        default: '["8.1", "8.2", "8.3"]'
+        default: [8.1, 8.2, 8.3]
     secrets:
       CODECOV_TOKEN:
         required: false
 
 env:
-  PHPSTAN_CACHE_DIR: '.phpstan.result.cache'
+  PHPSTAN_CACHE_DIR: './cache/.phpstan.result.cache'
+  PHPUNIT_CACHE_DIR: './cache/.phpunit.result.cache'
+  PHP_CS_FIXER_CACHE_PATH: './cache/.php-cs-fixer.cache'
   COVERAGE_PATH: 'coverage.xml'
   GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   COMPOSER_ROOT_VERSION: dev-main # see https://getcomposer.org/doc/articles/troubleshooting.md#dependencies-on-the-root-package
@@ -80,7 +82,7 @@ jobs:
         id: php-cs-fixer-cache
         uses: actions/cache/restore@v4
         with:
-          path: .php-cs-fixer.cache
+          path: ${{ env.PHP_CS_FIXER_CACHE_PATH }}
           key: php-cs-fixer-${{ github.ref_name }}
           restore-keys: |
             php-cs-fixer-
@@ -93,7 +95,7 @@ jobs:
         if: always()
         uses: actions/cache/save@v4
         with:
-          path: .php-cs-fixer.cache
+          path: ${{ env.PHP_CS_FIXER_CACHE_PATH }}
           key: php-cs-fixer-${{ github.ref_name }}
 
   php-stan:
