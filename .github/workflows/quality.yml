@@ -57,7 +57,7 @@ jobs:
           coverage: none
 
       - name: Install dependencies
-        uses: ramsey/composer-install@v3
+        uses: ramsey/composer-install@v4
 
       - name: Check PSR-4 mapping
         run: composer dump-autoload --dev --optimize --strict-psr
@@ -76,7 +76,7 @@ jobs:
           coverage: none
 
       - name: Install dependencies
-        uses: ramsey/composer-install@v3
+        uses: ramsey/composer-install@v4
 
       - name: Load php-cs-fixer cache
         id: php-cs-fixer-cache
@@ -112,7 +112,7 @@ jobs:
           coverage: none
 
       - name: Install dependencies
-        uses: ramsey/composer-install@v3
+        uses: ramsey/composer-install@v4
 
       - name: Pull PHPStan cache
         id: pull-phpstan-cache
@@ -167,7 +167,7 @@ jobs:
           coverage: none
 
       - name: Install dependencies
-        uses: ramsey/composer-install@v3
+        uses: ramsey/composer-install@v4
 
       - name: Run Unit tests
         run: composer run unit
@@ -186,7 +186,7 @@ jobs:
           coverage: pcov
 
       - name: Install dependencies
-        uses: ramsey/composer-install@v3
+        uses: ramsey/composer-install@v4
 
       - name: Run Unit tests
         run: vendor/bin/phpunit --coverage-clover=${{ env.COVERAGE_PATH }}
