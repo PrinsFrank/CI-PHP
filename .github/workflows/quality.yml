@@ -192,7 +192,7 @@ jobs:
         run: vendor/bin/phpunit --coverage-clover=${{ env.COVERAGE_PATH }}
 
       - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v6
+        uses: codecov/codecov-action@v7
         with:
           file: ${{ env.COVERAGE_PATH }}
           fail_ci_if_error: true
