@@ -199,6 +199,7 @@ jobs:
   php-coverage:
     name: PHP Test coverage
     runs-on: ubuntu-latest
+    if: ${{ secrets.CODECOV_TOKEN != '' }}
     permissions:
       contents: read
     steps:
@@ -289,7 +290,6 @@ jobs:
       - php-code-style
       - php-stan
       - php-unit
-      - php-coverage
       - php-lint
       - editorconfig
       - typos
