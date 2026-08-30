@@ -199,30 +199,34 @@ jobs:
   php-coverage:
     name: PHP Test coverage
     runs-on: ubuntu-latest
-    if: ${{ secrets.CODECOV_TOKEN != '' }}
     permissions:
       contents: read
     steps:
       - name: Checkout code
+        if: ${{ secrets.CODECOV_TOKEN != '' }}
         uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
         with:
           persist-credentials: false
 
       - name: Setup PHP
+        if: ${{ secrets.CODECOV_TOKEN != '' }}
         uses: shivammathur/setup-php@f3e473d116dcccaddc5834248c87452386958240 # 2.37.2
         with:
           php-version: ${{ inputs.PHP_VERSION }}
           coverage: pcov
 
       - name: Install dependencies
+        if: ${{ secrets.CODECOV_TOKEN != '' }}
         uses: ramsey/composer-install@65e4f84970763564f46a70b8a54b90d033b3bdda # 4.0.0
 
       - name: Run Unit tests
+        if: ${{ secrets.CODECOV_TOKEN != '' }}
         env:
           COVERAGE_PATH: ${{ env.COVERAGE_PATH }}
         run: vendor/bin/phpunit --coverage-clover=$COVERAGE_PATH
 
       - name: Upload coverage to Codecov
+        if: ${{ secrets.CODECOV_TOKEN != '' }}
         uses: codecov/codecov-action@fb8b3582c8e4def4969c97caa2f19720cb33a72f # v7.0.0
         with:
           file: ${{ env.COVERAGE_PATH }}
