@@ -296,7 +296,7 @@ jobs:
           persist-credentials: false
 
       - name: Search for misspellings
-        uses: crate-ci/typos@bee27e3a4fd1ea2111cf90ab89cd076c870fce14 # v1.48.0
+        uses: crate-ci/typos@512fc24f32f44ab01972217aaaf3dc86ec234d53 # v1.50.2
 
   completed:
     name: Quality-Done # Used as a required workflow name
